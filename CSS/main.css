@@ -1,6 +1,10 @@
 body {
   box-sizing: border-box;
   background: #000;
+  font-family: 'Bree Serif', serif;
+}
+ul {
+  list-style-type: none;
 }
 #search-div {
   width: 100%;
@@ -19,27 +23,53 @@ input {
 input:focus {
   outline: none;
 }
+#region {
+  width: 100%;
+  background: white;
+  margin-bottom: 50px;
+  height: 40px;
+}
+#region ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 9px;
+}
+#region ul li {
+  margin-left: 30px;
+}
 #main {
   width: 100%;
 }
 #main ul {
   width: 100%;
-  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
 }
 #main ul li {
-  width: 40%;
-  margin-left: 10%;
+  width: 100%;
+  margin-left: 0;
   color: white;
+  height: 50px;
+
+}
+#main ul li img {
+  width: 100%;
+}
+#main p {
+  text-align: center;
 }
 
 @media screen and (min-width: 478px) {
+  #search-div {
+    margin-bottom: 50px;
+  }
   input {
     width: 40%;
     margin-left: 30%;
   }
   #main ul li {
-    width: 20%;
-    margin-left: 5%;
+    width: 15%;
+    margin-left: 4.1%;
 }
