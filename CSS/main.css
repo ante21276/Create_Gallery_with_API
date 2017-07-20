@@ -5,6 +5,12 @@ body {
 }
 ul {
   list-style-type: none;
+  cursor: pointer;
+}
+.header {
+  width: 100%;
+  color:#fff;
+  text-align: center;
 }
 #search-div {
   width: 100%;
@@ -22,6 +28,9 @@ input {
 }
 input:focus {
   outline: none;
+  background: #fff;
+  color: #000;
+  transition: background-color .6s;
 }
 #region {
   width: 100%;
@@ -34,9 +43,10 @@ input:focus {
   flex-direction: row;
   justify-content: center;
   padding-top: 9px;
+  padding-left: 0;
 }
 #region ul li {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 #main {
   width: 100%;
@@ -51,7 +61,7 @@ input:focus {
   width: 100%;
   margin-left: 0;
   color: white;
-  height: 50px;
+  height: 60px;
 
 }
 #main ul li img {
@@ -59,6 +69,31 @@ input:focus {
 }
 #main p {
   text-align: center;
+}
+.hide {
+  display: none;
+}
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 2;
+    cursor: pointer;
+}
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
 }
 
 @media screen and (min-width: 478px) {

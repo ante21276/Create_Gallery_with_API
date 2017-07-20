@@ -11,16 +11,22 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js" ></script>
+  <script src="js/overlay.js"></script>
+
 </head>
 <body>
+  <div class="header">
+    <h1>WORLD COUNTRIES</h1>
+  </div>
   <div id="search-div">
-    <form>
-      <input type="text" placeholder="Search">
+    <form id="form">
+      <input id="search" type="text" placeholder="Search">
     </form>
   </div>
   <div id="region">
     <ul>
+      <li id="All">All</li>
       <li id="Africa">Africa</li>
       <li id="Americas">Americas</li>
       <li id="Asia">Asia</li>
@@ -28,9 +34,11 @@
       <li id="Oceania">Oceania</li>
     </ul>
   </div>
-
+  <div id="overlay">
+    <div id="text">Overlay Text</div>
+  </div>
   <div id="main">
   </div>
-
 </body>
+
 </html>
