@@ -114,6 +114,7 @@ input:focus {
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
+  z-index: 10000;
 }
 
 /* Position the "next button" to the right */
@@ -125,7 +126,10 @@ input:focus {
 .prev {
   margin-left: 40px;
 }
-
+.prev:hover,
+.next:hover {
+  background-color: rgb(21, 175, 235);
+}
 
 #text p {
   font-size: 16px;

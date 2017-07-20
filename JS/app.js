@@ -11,6 +11,9 @@ $(document).ready(function() {
 
 
       let $li = $("#countriesList li");
+      let $prev = $("#prev");
+      let $next = $("#next");
+
 
       $li.click(function(e) {
         let overlayInfo = ""
@@ -23,15 +26,32 @@ $(document).ready(function() {
              overlayInfo += "<p> Population:\xa0\xa0" + country.population + "</p>"
              overlayInfo += "<p> Area:\xa0\xa0" + country.area + " km</p>"
            }
+           $prev.click(function() {
+             overlayInfo = "";
+             let ime = e.target.previousSibling.innerHTML;
+             if (ime === country.name) {
+               e.preventDefault();
+               console.log(ime)
+               overlayInfo += "<p> Country:\xa0\xa0" + country.name + "</p>"
+               overlayInfo += "<p> Region:\xa0\xa0" + country.region + "</p>"
+               overlayInfo += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>"
+               overlayInfo += "<p> Capital:\xa0\xa0" + country.capital + "</p>"
+               overlayInfo += "<p> Population:\xa0\xa0" + country.population + "</p>"
+               overlayInfo += "<p> Area:\xa0\xa0" + country.area + " km</p>"
+             }
+           });
+
+
          });
-         $("#text").html(overlayInfo)
+         console.log(overlayInfo)
+         $("#text").html(overlayInfo);
          document.getElementById("overlay").style.display = "block";
        });
 
        let $overlay = $("#overlay");
 
        $overlay.click(function(e) {
-         if (e.target.id = "overlay") {
+         if (e.target.tagName = "overlay") {
            document.getElementById("overlay").style.display = "none";
          }
        });
