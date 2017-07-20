@@ -8,6 +8,33 @@ $(document).ready(function() {
       }); //each
       html += "</ul>"
       $("#main").html(html)
+
+
+      let $li = $("#countriesList li");
+
+      $li.click(function(e) {
+        let overlayInfo = ""
+         $.each(data, function(index, country) {
+           if(e.target.innerHTML === country.name) {
+             overlayInfo += "<p> Country:\xa0\xa0" + country.name + "</p>"
+             overlayInfo += "<p> Region:\xa0\xa0" + country.region + "</p>"
+             overlayInfo += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>"
+             overlayInfo += "<p> Capital:\xa0\xa0" + country.capital + "</p>"
+             overlayInfo += "<p> Population:\xa0\xa0" + country.population + "</p>"
+             overlayInfo += "<p> Area:\xa0\xa0" + country.area + " km</p>"
+           }
+         });
+         $("#text").html(overlayInfo)
+         document.getElementById("overlay").style.display = "block";
+       });
+
+       let $overlay = $("#overlay");
+
+       $overlay.click(function(e) {
+         if (e.target.id = "overlay") {
+           document.getElementById("overlay").style.display = "none";
+         }
+       });
   }); //json
 
 
@@ -45,4 +72,5 @@ $(document).ready(function() {
         }
       } //loop
     }) //eventListener
+
 }); // document
