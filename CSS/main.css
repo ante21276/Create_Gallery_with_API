@@ -126,9 +126,19 @@ input:focus {
 .prev {
   margin-left: 40px;
 }
+
 .prev:hover,
 .next:hover {
   background-color: rgb(21, 175, 235);
+}
+
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 #text p {

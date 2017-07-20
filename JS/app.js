@@ -26,32 +26,35 @@ $(document).ready(function() {
              overlayInfo += "<p> Population:\xa0\xa0" + country.population + "</p>"
              overlayInfo += "<p> Area:\xa0\xa0" + country.area + " km</p>"
            }
+        });
            $prev.click(function() {
-             overlayInfo = "";
-             let ime = e.target.previousSibling.innerHTML;
-             if (ime === country.name) {
-               e.preventDefault();
-               console.log(ime)
-               overlayInfo += "<p> Country:\xa0\xa0" + country.name + "</p>"
-               overlayInfo += "<p> Region:\xa0\xa0" + country.region + "</p>"
-               overlayInfo += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>"
-               overlayInfo += "<p> Capital:\xa0\xa0" + country.capital + "</p>"
-               overlayInfo += "<p> Population:\xa0\xa0" + country.population + "</p>"
-               overlayInfo += "<p> Area:\xa0\xa0" + country.area + " km</p>"
-             }
-           });
+             let overlayInfo1 = "";
+             $.each(data, function(index, country) {
+               let ime = e.target.previousSibling.innerHTML;
+               if (ime === country.name) {
+                 e.preventDefault();
+
+                 overlayInfo1 += "<p> Country:\xa0\xa0" + country.name + "</p>"
+                 overlayInfo1 += "<p> Region:\xa0\xa0" + country.region + "</p>"
+                 overlayInfo1 += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>"
+                 overlayInfo1 += "<p> Capital:\xa0\xa0" + country.capital + "</p>"
+                 overlayInfo1 += "<p> Population:\xa0\xa0" + country.population + "</p>"
+                 overlayInfo1 += "<p> Area:\xa0\xa0" + country.area + " km</p>"
+               }
+             });
+             $("#text").html(overlayInfo1);
+             document.getElementById("overlay").style.display = "block";
+          });
 
 
-         });
-         console.log(overlayInfo)
          $("#text").html(overlayInfo);
          document.getElementById("overlay").style.display = "block";
        });
 
-       let $overlay = $("#overlay");
+       let $close = $("#close");
 
-       $overlay.click(function(e) {
-         if (e.target.tagName = "overlay") {
+       $close.click(function(e) {
+         if (e.target.tagName = "span") {
            document.getElementById("overlay").style.display = "none";
          }
        });
