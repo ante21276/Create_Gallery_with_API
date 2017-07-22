@@ -2,6 +2,7 @@ body {
   box-sizing: border-box;
   background: #000;
   font-family: 'Bree Serif', serif;
+  outline: none;
 }
 ul {
   list-style-type: none;
@@ -97,7 +98,6 @@ input:focus {
     font-size: 50px;
     color: white;
     transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
 }
 .prev,
 .next {
@@ -112,8 +112,6 @@ input:focus {
   font-size: 20px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
   z-index: 10000;
 }
 
@@ -139,6 +137,9 @@ input:focus {
   right: 25px;
   font-size: 35px;
   font-weight: bold;
+}
+.close:hover {
+  color: rgb(21, 175, 235);
 }
 
 #text p {

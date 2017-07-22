@@ -1,56 +1,78 @@
-$(document).ready(function() {
-  let countriesAPI = "https://restcountries.eu/rest/v2/all";
+
+  const countriesAPI = "https://restcountries.eu/rest/v2/all";
   let html = "<ul id='countriesList'>";
   $.getJSON(countriesAPI, function(data) {
       $.each(data, function(index, country) {
-        html += "<li class=" + country.region + ">"
-        html +=  country.name + "</li>"
+        html += "<li data-internalid=" + index + " class=" + country.region + ">";
+        html +=  country.name + "</li>";
       }); //each
-      html += "</ul>"
-      $("#main").html(html)
-
+      html += "</ul>";
+      $("#main").html(html);
 
       let $li = $("#countriesList li");
-      let $prev = $("#prev");
-      let $next = $("#next");
-
 
       $li.click(function(e) {
-        let overlayInfo = ""
+        let overlayInfo = "";
          $.each(data, function(index, country) {
+
            if(e.target.innerHTML === country.name) {
-             overlayInfo += "<p> Country:\xa0\xa0" + country.name + "</p>"
-             overlayInfo += "<p> Region:\xa0\xa0" + country.region + "</p>"
-             overlayInfo += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>"
-             overlayInfo += "<p> Capital:\xa0\xa0" + country.capital + "</p>"
-             overlayInfo += "<p> Population:\xa0\xa0" + country.population + "</p>"
-             overlayInfo += "<p> Area:\xa0\xa0" + country.area + " km</p>"
+             overlayInfo += '<p> Country:\xa0\xa0' + country.name + '</p>';
+             overlayInfo += "<p> Region:\xa0\xa0" + country.region + "</p>";
+             overlayInfo += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>";
+             overlayInfo += "<p> Capital:\xa0\xa0" + country.capital + "</p>";
+             overlayInfo += "<p> Population:\xa0\xa0" + country.population.toLocaleString() + "</p>";
+             overlayInfo += "<p> Area:\xa0\xa0" + country.area.toLocaleString() + " km</p>";
+             overlayInfo += "<p> Native Name:\xa0\xa0" + country.nativeName + "</p>";
            }
         });
-           $prev.click(function() {
-             let overlayInfo1 = "";
-             $.each(data, function(index, country) {
-               let ime = e.target.previousSibling.innerHTML;
-               if (ime === country.name) {
-                 e.preventDefault();
+        $("#text").html(overlayInfo);
+        document.getElementById("overlay").style.display = "block";
 
-                 overlayInfo1 += "<p> Country:\xa0\xa0" + country.name + "</p>"
-                 overlayInfo1 += "<p> Region:\xa0\xa0" + country.region + "</p>"
-                 overlayInfo1 += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>"
-                 overlayInfo1 += "<p> Capital:\xa0\xa0" + country.capital + "</p>"
-                 overlayInfo1 += "<p> Population:\xa0\xa0" + country.population + "</p>"
-                 overlayInfo1 += "<p> Area:\xa0\xa0" + country.area + " km</p>"
-               }
-             });
-             $("#text").html(overlayInfo1);
-             document.getElementById("overlay").style.display = "block";
+        let atribute = parseInt(e.target.getAttribute("data-internalid"));
+        let prev = document.getElementById("prev");
+        let next = document.getElementById("next");
+
+         prev.addEventListener("click", () => {
+
+           atribute -= 1;
+
+           let overlayInfo1 = "";
+           $.each(data, function(index, country) {
+             if (atribute === index) {
+               overlayInfo1 += "<p> Country:\xa0\xa0" + country.name + "</p>";
+               overlayInfo1 += "<p> Region:\xa0\xa0" + country.region + "</p>";
+               overlayInfo1 += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>";
+               overlayInfo1 += "<p> Capital:\xa0\xa0" + country.capital + "</p>";
+               overlayInfo1 += "<p> Population:\xa0\xa0" + country.population.toLocaleString() + "</p>";
+               overlayInfo1 += "<p> Area:\xa0\xa0" + country.area.toLocaleString() + " km</p>";
+               overlayInfo1 += "<p> Native Name:\xa0\xa0" + country.nativeName + "</p>";
+             }
+           });
+           $("#text").html(overlayInfo1);
+           document.getElementById("overlay").style.display = "block";
+        });
+
+        next.addEventListener("click", () => {
+          atribute += 1;
+          let overlayInfo2 = "";
+          $.each(data, function(index, country) {
+            if (atribute === index) {
+              overlayInfo2 += "<p> Country:\xa0\xa0" + country.name + "</p>";
+              overlayInfo2 += "<p> Region:\xa0\xa0" + country.region + "</p>";
+              overlayInfo2 += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>";
+              overlayInfo2 += "<p> Capital:\xa0\xa0" + country.capital + "</p>";
+              overlayInfo2 += "<p> Population:\xa0\xa0" + country.population.toLocaleString() + "</p>";
+              overlayInfo2 += "<p> Area:\xa0\xa0" + country.area.toLocaleString() + " km</p>";
+              overlayInfo2 += "<p> Native Name:\xa0\xa0" + country.nativeName + "</p>";
+            }
           });
-
-
-         $("#text").html(overlayInfo);
-         document.getElementById("overlay").style.display = "block";
+          $("#text").html(overlayInfo2);
+          document.getElementById("overlay").style.display = "block";
        });
 
+
+
+      });
        let $close = $("#close");
 
        $close.click(function(e) {
@@ -59,9 +81,6 @@ $(document).ready(function() {
          }
        });
   }); //json
-
-
-
 
   let $liRegion = $("#region li");
 
@@ -94,6 +113,4 @@ $(document).ready(function() {
           $(countriesItems[i]).fadeOut(500).addClass("hide"); //Hide elements that don't fulfil the search criteria
         }
       } //loop
-    }) //eventListener
-
-}); // document
+    }); //eventListener
