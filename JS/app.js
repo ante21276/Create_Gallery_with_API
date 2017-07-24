@@ -1,17 +1,6 @@
   const countriesAPI = "https://restcountries.eu/rest/v2/all";
   let html = "<ul id='countriesList'>";
   let overlayInfo = "";
-  function country1 (overlayInfo, country) {
-    overlayInfo += "<img  class='svg'  src='https://restcountries.eu/data/" + country.alpha3Code.toLowerCase()  +".svg' >";
-    overlayInfo += '<p> Country:\xa0\xa0' + country.name + '</p>';
-    overlayInfo += "<p> Region:\xa0\xa0" + country.region + "</p>";
-    overlayInfo += "<p> Subregion:\xa0\xa0" + country.subregion + "</p>";
-    overlayInfo += "<p> Capital:\xa0\xa0" + country.capital + "</p>";
-    overlayInfo += "<p> Population:\xa0\xa0" + country.population.toLocaleString() + "</p>";
-    overlayInfo += "<p> Area:\xa0\xa0" + country.area.toLocaleString() + " km</p>";
-    overlayInfo += "<p> Native Name:\xa0\xa0" + country.nativeName + "</p>";
-
-  }
 
   $.getJSON(countriesAPI, function(data) {
       $.each(data, function(index, country) {
@@ -89,8 +78,6 @@
           $("#text").html(overlayInfo);
           document.getElementById("overlay").style.display = "block";
        });
-
-
 
       });
        let $close = $("#close");
