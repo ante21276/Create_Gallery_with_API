@@ -146,6 +146,10 @@ input:focus {
   font-size: 16px;
   color:rgb(21, 175, 235);
 }
+.svg {
+  width: 200px;
+  height: 150px;
+}
 
 @media screen and (min-width: 478px) {
   #search-div {
